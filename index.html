@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping list Vue</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- <input-form
+        button-value="Lägg till"
+        form-id="listForm"
+        id-name="item"
+        placeholder-name="Skriv här..."
+      ></input-form>
+      <input-form
+        button-value="Spara"
+        form-id="saveListForm"
+        id-name="savedListNameInput"
+        placeholder-name="Spara lista som..."
+      ></input-form> -->
+
+      <!-- <input-form
+        button-value="Lägg till"
+        placeholder-name="Skriv här..."
+        input-id="item"
+        id-name="listform"
+        input-item="newItem"
+        @submit-method="addItem"
+      ></input-form>
+
+      <input-form
+        button-value="Spara"
+        placeholder-name="Spara lista som..."
+        input-id="savedListNameInput"
+        id-name="saveListForm"
+        input-item="newSavedItem"
+        @save-method="saveItems"
+      ></input-form> -->
+
+      <form @submit.prevent="addItem(newItem)" id="listForm" class="inpuFields">
+        <input
+          type="text"
+          id="item"
+          name="item"
+          placeholder="Skriv här..."
+          required
+          v-model="newItem"
+          input-item=""
+        />
+        <input type="submit" value="Lägg till" class="inputBtn" />
+      </form>
+
+      <form @submit.prevent="saveItems" id="saveListForm" class="inpuFields">
+        <input
+          type="text"
+          id="savedListNameInput"
+          name="item"
+          placeholder="Spara lista som..."
+          required
+          v-model="newSavedItem"
+        />
+        <input type="submit" value="Spara" class="inputBtn" />
+      </form>
+
+      <article>
+        <ul id="userList">
+          <li v-for="(item, index) in items">
+            {{item}}
+            <button class="removeBtn" @click="removeItem(index)">x</button>
+          </li>
+        </ul>
+
+        <ul id="savedUlList">
+          <li
+            class="lists"
+            @click="renderSavedItems(savedItems, index)"
+            v-for="(item, index) in savedItems"
+          >
+            {{savedName[index]}}
+            <button class="removeBtn" @click="removeSavedItem(index)">x</button>
+          </li>
+        </ul>
+      </article>
+    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
